@@ -1,0 +1,22 @@
+GET http://localhost:3000/register
+
+
+### Sending a Request
+POST http://localhost:3000/register
+
+###Error Checking on home Page
+
+GET http://localhost:3000/
+
+###
+
+POST http://localhost:3000/register
+Content-Type: Content-Type: application/json
+
+{
+    "username":"Admin",
+    "password":"String",
+    "email":"brijesh.shah41@gmail.com",
+    "name":"Admin",
+    "phoneNumber":123
+}
