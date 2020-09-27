@@ -4,6 +4,12 @@ var express = require('express')
 
 var app = express()
 
+var handlebars = require('express3-handlebars')
+ .create({ defaultLayout:'main' });
+
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,7 +21,16 @@ app.listen(app.get('port'), () => {
 console.log("Server Started "+"http://localhost:3000");
 });
 
+// Register Page Complete. Only field types to be changed as well as there validations are required
+
 app.use('/register',UserRegister);
+
+app.get('/',(req,res)=>{
+  console.log(req.url);
+  console.log(req.method);
+  res.send("Home Page");
+
+})
 
 app.use('/',(req,res,next)=>{
 
@@ -35,12 +50,8 @@ app.use((err,req,res,next)=>{
 
 });
 
-app.get('/',(req,res)=>{
-  console.log(req.url);
-  console.log(req.method);
-  res.send("Home Page");
 
-})
+// Create Your own Database Change name here. If you wish or we could use an online cluster.
 
 mongoose.connect("mongodb://localhost:27017/NewDatabase",
 { 

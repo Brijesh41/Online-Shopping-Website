@@ -1,14 +1,35 @@
+<form method="post" action="http://localhost:3000/register">
+  <div class="form-group">
+    <br>
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name">
+  </div>
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" placeholder="Username" name="username">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" placeholder="Email" name="email">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="text" class="form-control" placeholder="Password" name="password">
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="text" class="form-control" placeholder="Password" name="password2">
+  </div>
 
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input type="Number" class="form-control" placeholder="PhoneNumber" name="phoneNumber">
+  </div>
 
-<html>
-    <script src="register.js"></script>
-    <form action = "register.js " method="POST" id = "RegisterPage">
-        <label>Email</label><br>
-        <input type="text" id = "email"></input><br>
-        <label>Password</label><br>
-        <input type = "password" id = "password">
-        <br>
-        <br>
-        <input type="button" value="Submit" onclick="SubmitValues()">
-    </form>
-</html>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+{{!-- <html>
+<h2>THIS TEST PAGE</h2>
+
+    </html> --}}
