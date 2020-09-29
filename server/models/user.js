@@ -37,6 +37,11 @@ const userSchema = new mongoose.Schema({
         required : true,
         trim : true
     },
+    phone : {
+        type : String,
+        required : true,
+        trim : true
+    },
     tokens : [
         {
             token : {
@@ -49,10 +54,7 @@ const userSchema = new mongoose.Schema({
         type : String,
         enum : [ 'MEMBER', 'ADMIN', 'SELLER' ],
         default : 'MEMBER'
-    },
-    avatar : {
-        type : Buffer
-    },
+    }
 }, { timestamps : true })
 
 //method to find if a user exists.
