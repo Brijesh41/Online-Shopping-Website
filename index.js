@@ -13,7 +13,9 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-var UserRegister = require('./Routes/User.route');
+var UserRegister = require('./Routes/UserRegister.route');
+
+var UserLogin = require('./Routes/UserLogin.route');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -25,12 +27,18 @@ console.log("Server Started "+"http://localhost:3000");
 
 app.use('/register',UserRegister);
 
+app.use('/login',UserLogin);
+
 app.get('/',(req,res)=>{
   console.log(req.url);
   console.log(req.method);
-  res.send("Home Page");
+  res.render('homepage');
 
-})
+});
+app.get('/homepage',(req,res)=>{
+  res.render('homepage')
+});
+
 
 app.use('/',(req,res,next)=>{
 

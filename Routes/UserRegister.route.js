@@ -12,9 +12,10 @@ app.set('view engine', 'handlebars');
 const UserController = require('../Controller/User.Controller');
 
 router.get('/',(req,res,next)=>{
-    console.log("fd");
     res.render('registrationpage');
 });
+
+
 
 
 router.post('/',UserController.createNewUser);
