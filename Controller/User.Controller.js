@@ -104,7 +104,7 @@ module.exports = {
                                 res.redirect('/login');
                                 })
                                 .catch(err => {
-                                res.status(400).send("unable to save to database");
+                                res.redirect('/register')
                                 });;
                             
                         });

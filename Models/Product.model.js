@@ -1,51 +1,38 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
-    productId  : {
+    id  : {
         type : String,
         required : true,
         unique : true
     },
-    name : {
-        type : String,
-        required : true
+    CategoryName : {
+        type:String,
+        required: true
     },
-    category : {
-        type : String,
-        required : true
+    SeoTags :{
+        type: String,
+        required: true
     },
-    manufacturer : {
-        type : String,
-        required : true
-    },
-    brand : {
-        type : String,
-        required : true
-    },
-    sellerId : {
-        type : String,
-        required : true
-    },
-    description : {
-        type : String,
-        required : true,
-        maxlength : 50
-    },
-    price : {
-        type: Number
-    },
-    unit : {
-        type : String,
-        required : true
-    },
-    quantity : {
-        type: Number
-    },
-    image : {
-        type : Buffer
+    ProductName: {
+        type: String,
+        required:true
     }
-})
+});
 
 const Product =  mongoose.model('Product', productSchema)
 
 module.exports = Product
+
+
+// Actual Data
+
+// Units Array
+// Tags Null
+// ProductExtraFields Null
+// ProductVariantAttributeGroups Null
+// ProductAttributes Null
+// ProductDetails Array
+// ProductVariantMedia Null
+
+

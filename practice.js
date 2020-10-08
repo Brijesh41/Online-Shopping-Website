@@ -20,24 +20,11 @@
 // }
 // console.log("return "+a());
 
- var User = require('./Models/User.model')
 
- req = {
-  "name": "csfv",
-  "username": "fejhk",
-  "email": "vscb@gmai.com",
-  "password": "dkb",
-  "password2": "dkb",
-  "phoneNumber": "312"
+
+
+function myGeeks(){
+    console.log("clickwde");
+    document.getElementById("first").innerHTML = "I am changed";
+
 }
- const newu = User(req);
-
-
-var bcrypt = require('bcryptjs');
-bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(newu.password, salt, function(err, hash) {
-        // Store hash in your password DB.
-
-        console.log(hash);
-    });
-})

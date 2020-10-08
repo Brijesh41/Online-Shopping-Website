@@ -10,12 +10,16 @@ var handlebars = require('express3-handlebars')
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+app.use(express.static('public'))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 var UserRegister = require('./Routes/UserRegister.route');
 
 var UserLogin = require('./Routes/UserLogin.route');
+
+var ProductPage = require('./Routes/ProductPage.route');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -28,6 +32,8 @@ console.log("Server Started "+"http://localhost:3000");
 app.use('/register',UserRegister);
 
 app.use('/login',UserLogin);
+
+app.use('/productpage',ProductPage);
 
 app.get('/',(req,res)=>{
   console.log(req.url);
