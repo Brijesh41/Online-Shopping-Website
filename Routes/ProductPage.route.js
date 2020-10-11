@@ -9,11 +9,13 @@ app = express()
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+var authenticate = require('../verifytoken');
+
 const ProductController = require('../Controller/Product.Controller');
 
 
 // console.log("Hello");
-router.get('/*',ProductController.displayContent);
+router.get('/*',authenticate,ProductController.displayContent);
 
 
 

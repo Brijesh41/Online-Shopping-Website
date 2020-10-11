@@ -23,7 +23,13 @@ module.exports = {
                 console.log(productdetails);
 
                 console.log(productdetails.id + productdetails.CategoryName);
-                res.render('productpage',{id:productdetails.id,CategoryName:productdetails.CategoryName});
+
+                if(req.body.authenticate==false){
+                    res.render('productpage',{id:productdetails.id,CategoryName:productdetails.CategoryName,value:"User Not Signed in"});}
+                else{
+                      res.render('productpage',{id:productdetails.id,CategoryName:productdetails.CategoryName,value:"User Signed In"});
+                    }
+                
 
             }
             else{

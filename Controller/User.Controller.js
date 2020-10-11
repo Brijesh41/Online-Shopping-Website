@@ -3,8 +3,16 @@ const User = require('../Models/User.model');
 
 const bcrypt = require('bcryptjs');
 
-module.exports = {
+const jwt  = require('jsonwebtoken');
 
+const cookieParser = require('cookie-parser');
+
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+
+module.exports = {
 
     LoginUser: async (req,res) =>{
 
@@ -13,14 +21,34 @@ module.exports = {
         const email = req.body.email;
         const password  = req.body.password;
 
+        
+        console.log(email);
+
         User.findOne({email}).then(user =>{
             if(!user){
                 console.log("User Not Found");
+
+                res.redirect('/login');
             }
             else{
                 bcrypt.compare(password,user.password).then(isMatch =>{
                     if(isMatch){
                         console.log("User Found");
+
+                        console.log(process.env.TOKEN_SECRET);
+
+
+                        const token = jwt.sign({_id:user._id},""+process.env.TOKEN_SECRET);
+
+                        // res.header('auth_token',token).send(token);
+
+                        res.cookie('token', token, { httpOnly: true });
+
+
+
+
+
+
                         res.redirect('/homepage');
                     }
                     else{
@@ -28,9 +56,11 @@ module.exports = {
                         res.redirect('/login');
                     }
                 }).catch((err)=>{
-                    console.log("error thrown");
+                    console.log("error thrown",err);
                 });
             }
+
+            
 
         });
 
@@ -91,7 +121,7 @@ module.exports = {
                 else{
                     const user = new User(req.body);
                     
-                    let a;
+        
                     const rounds = 10;
                     const password = user.password;
                     bcrypt.genSalt(rounds, function(err, salt) {
